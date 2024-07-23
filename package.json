@@ -1,16 +1,7 @@
 {
-  "name": "school-project",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
   "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.5"
+    "dotenv": "^16.4.5",
+    "formidable": "^3.5.1",
+    "mysql2": "^3.10.3"
   }
 }
