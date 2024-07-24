@@ -1,10 +1,10 @@
-// pages/AddSchool.jsx
+// pages/addSchool.jsx
 import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import styles from "../styles/AddSchool.module.css";
+import styles from "../styles/addSchool.module.css";
 
-const AddSchool = () => {
+const addSchool = () => {
   const {
     register,
     handleSubmit,
@@ -18,9 +18,12 @@ const AddSchool = () => {
 
     // Append all form data to FormData object
     for (const key in data) {
-      formData.append(key, data[key]);
+      if (key === "image") {
+        formData.append("image", data.image[0]); // Append the image file
+      } else {
+        formData.append(key, data[key]);
+      }
     }
-    formData.append("image", data.image[0]);
 
     try {
       const response = await axios.post("/api/schools", formData);
@@ -28,6 +31,7 @@ const AddSchool = () => {
       reset();
     } catch (error) {
       console.error(error);
+      alert("An error occurred while adding the school. Please try again.");
     }
   };
 
@@ -154,4 +158,4 @@ const AddSchool = () => {
   );
 };
 
-export default AddSchool;
+export default addSchool;
